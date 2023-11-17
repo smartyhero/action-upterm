@@ -120,3 +120,4 @@ After connecting with ssh:
 This will resize the console to the full width and height of the connected terminal.
 ([More information](https://unix.stackexchange.com/a/570015))
 
+# 
