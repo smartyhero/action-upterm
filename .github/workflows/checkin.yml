@@ -1,7 +1,7 @@
 name: Node.js CI
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
     branches: [master]
 jobs:
@@ -21,3 +21,13 @@ jobs:
           CI: "true"
       - name: Build project
         run: npm run build
+      - name: Upload Installer Asset
+        id: upload-installer-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: lib/index.js
+          asset_name: index.js
+          asset_content_type: application/javascript
